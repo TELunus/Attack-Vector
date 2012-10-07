@@ -72,7 +72,7 @@ int main()
     cout<<"test vector is "<<test_vect<<endl;
 
 
-    test_mat.devide_row(2,5);
+    test_mat.divide_row(2,5);
     test_mat.multiply_row(1,2);
     test_mat.add_row(0,2);
     cout<<"test matrix is "<<test_mat.write();

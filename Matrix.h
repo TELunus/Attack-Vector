@@ -13,11 +13,10 @@ class math_matrix//states are blank(can't fail), failable(needs checking), check
 {
 
     public:
-        math_matrix(const unsigned int&,const unsigned int&);
         math_matrix(const vector<math_vector>&);//handled
         math_matrix(const vector<vector<double> >&);//handled
 
-        void devide_row(const unsigned int&, const double&);//handled
+        void divide_row(const unsigned int& rowIndex, const double& denominator);//handled
         void multiply_row(const unsigned int&, const double&);//handled
         void add_row(const unsigned int&,const unsigned  int&);//handled
         void subtract_row(const unsigned int&,const unsigned  int&);//handled

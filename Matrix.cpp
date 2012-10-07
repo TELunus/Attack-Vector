@@ -1,9 +1,4 @@
 #include "Matrix.h"
-math_matrix::math_matrix(const unsigned int& matrixSize,const unsigned int& VectorSize)
-{
-    m_values = vector <math_vector > (matrixSize,math_vector(VectorSize));
-    m_tolerance = 1.0e-6;
-}
 
 math_matrix::math_matrix(const vector<math_vector>& values)
 {
@@ -35,11 +30,11 @@ math_matrix::math_matrix(const vector<vector<double> >& values)
     m_tolerance = 1.0e-6;
 }
 
-void math_matrix::devide_row(const unsigned int& numerator, const double& denomerator)
+void math_matrix::divide_row(const unsigned int& rowIndex, const double& denominator)
 {
-    if (num_rows() > numerator)
+    if (num_rows() > rowIndex)
     {
-        m_values[numerator] /= denomerator;
+        m_values[rowIndex] /= denominator;
     }
     else
     {
@@ -298,16 +293,16 @@ math_matrix math_matrix::inverse()const
                     diagonal_element = accountant.m_values[i].m_values[i];
                 }
 
-                accountant.devide_row(i,diagonal_element);//make sure diagonal element in this collum is a 1
-                inverse.devide_row(i,diagonal_element);
+                accountant.divide_row(i,diagonal_element);//make sure diagonal element in this collum is a 1
+                inverse.divide_row(i,diagonal_element);
 
                 for(unsigned int j = 0; j<m_values.size(); j++) //walk row by row
                 {
                     double ith_element = accountant.m_values[j].m_values[i];
                     if((ith_element >= m_tolerance) || (ith_element <= (-1*m_tolerance) ) )
                     {
-                        accountant.devide_row(j,accountant.m_values[j].m_values[i]);//devide row by its element from this collum
-                        inverse.devide_row(j,accountant.m_values[j].m_values[i]);
+                        accountant.divide_row(j,accountant.m_values[j].m_values[i]);//devide row by its element from this collum
+                        inverse.divide_row(j,accountant.m_values[j].m_values[i]);
                         if(i != j)//if we are not dealing with an element on a diagonal
                         {
                             accountant.m_values[j]-=accountant.m_values[j];//subtract the row on that has a diagonal in this collum from this row
