@@ -32,21 +32,25 @@ math_matrix::math_matrix(const vector<vector<double> >& values)
 
 void math_matrix::divide_row(const unsigned int& rowIndex, const double& denominator)
 {
+    if(abs(denominator) < m_tolerance)
+    {
+        throw FlexibleExeption("Division by zero in divide_row");
+    }
     if (num_rows() > rowIndex)
     {
         m_values[rowIndex] /= denominator;
     }
     else
     {
-        throw FlexibleExeption("The program tried to devide a row with an invalid row index");
+        throw FlexibleExeption("The program tried to divide a row with an invalid row index");
     }
 }
 
-void math_matrix::multiply_row(const unsigned int& multiplicand, const double& multiplier)
+void math_matrix::multiply_row(const unsigned int& rowIndex, const double& multiplier)
 {
-    if (num_rows() > multiplicand)
+    if (num_rows() > rowIndex)
     {
-        m_values[multiplicand] *= multiplier;
+        m_values[rowIndex] *= multiplier;
     }
     else
     {

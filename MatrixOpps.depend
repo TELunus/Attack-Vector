@@ -245,3 +245,16 @@
 1298095722 source:c:\users\telunus\documents\github\attack-vector\flexibleexeption.cpp
 	"FlexibleExeption.h"
 
+1349571915 source:c:\users\telunus\documents\github\attack-vector\matrixopps.cpp
+	<iostream>
+	<vector>
+	<math.h>
+	"Matrix.h"
+
+1349572257 c:\users\telunus\documents\github\attack-vector\matrix.h
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<math.h>
+	"MathVector.h"
+

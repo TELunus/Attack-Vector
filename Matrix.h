@@ -17,7 +17,7 @@ class math_matrix//states are blank(can't fail), failable(needs checking), check
         math_matrix(const vector<vector<double> >&);//handled
 
         void divide_row(const unsigned int& rowIndex, const double& denominator);//handled
-        void multiply_row(const unsigned int&, const double&);//handled
+        void multiply_row(const unsigned int& rowIndex, const double& multiplier);//handled
         void add_row(const unsigned int&,const unsigned  int&);//handled
         void subtract_row(const unsigned int&,const unsigned  int&);//handled
         math_matrix drop_row(const unsigned int&)const;

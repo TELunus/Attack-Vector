@@ -130,10 +130,61 @@
 1349571921 source:c:\users\telunus\documents\github\attack-vector\matrix.cpp
 	"Matrix.h"
 
-1349571921 c:\users\telunus\documents\github\attack-vector\matrix.h
+1349572257 c:\users\telunus\documents\github\attack-vector\matrix.h
 	<iostream>
 	<stdlib.h>
 	<vector>
 	<math.h>
 	"MathVector.h"
+
+1338609600 source:c:\users\telunus\documents\github\attack-vector\camera.cpp
+	"Camera.h"
+
+1338176690 c:\users\telunus\documents\github\attack-vector\camera.h
+	"Matrix.h"
+	"ColoredPoint.h"
+	"Shape.h"
+	<gl/gl.h>
+
+1338176146 c:\users\telunus\documents\github\attack-vector\coloredpoint.h
+	"Matrix.h"
+
+1338176572 c:\users\telunus\documents\github\attack-vector\shape.h
+	"ColoredPoint.h"
+	<gl/gl.h>
+	"Matrix.h"
+
+1338176124 source:c:\users\telunus\documents\github\attack-vector\coloredpoint.cpp
+	"ColoredPoint.h"
+
+1338176572 source:c:\users\telunus\documents\github\attack-vector\shape.cpp
+	"Shape.h"
+
+1338611230 source:c:\users\telunus\documents\github\attack-vector\main.cpp
+	<windows.h>
+	<gl/gl.h>
+	"ship.h"
+	"Shape.h"
+	"Camera.h"
+	"reader.h"
+
+1338609516 c:\users\telunus\documents\github\attack-vector\ship.h
+	"Shape.h"
+	<iostream>
+	<fstream>
+
+1338521248 c:\users\telunus\documents\github\attack-vector\reader.h
+	<iostream>
+	<fstream>
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<sstream>
+	<string>
+
+1338520970 source:c:\users\telunus\documents\github\attack-vector\reader.cpp
+	"reader.h"
+
+1338435150 source:c:\users\telunus\documents\github\attack-vector\ship.cpp
+	"ship.h"
 
