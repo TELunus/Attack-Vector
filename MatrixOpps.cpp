@@ -16,8 +16,8 @@ int main()
 {
 	try
 	{
-    double fooArray[] = {-1, 0, 0};
-    vector <double> foo(fooArray);
+
+    vector <double> foo;
     foo.push_back(-1);
     foo.push_back(0);
     foo.push_back(0);
