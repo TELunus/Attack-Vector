@@ -1,0 +1,112 @@
+# depslib dependency file v1.0
+1315129631 source:c:\users\telunus\projects\flightsim\main.c
+	<windows.h>
+	<gl/gl.h>
+
+1338435678 source:c:\users\telunus\projects\flightsim\mathvector.cpp
+	"MathVector.h"
+
+1338435682 c:\users\telunus\projects\flightsim\mathvector.h
+	<iostream>
+	<sstream>
+	<vector>
+	<math.h>
+	"FlexibleExeption.h"
+
+1323499681 c:\users\telunus\projects\flightsim\flexibleexeption.h
+	<exception>
+	<string>
+
+1338518379 source:c:\users\telunus\projects\flightsim\matrix.cpp
+	"Matrix.h"
+
+1338518421 c:\users\telunus\projects\flightsim\matrix.h
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<math.h>
+	"MathVector.h"
+
+1338611229 source:c:\users\telunus\projects\flightsim\main.cpp
+	<windows.h>
+	<gl/gl.h>
+	"ship.h"
+	"Shape.h"
+	"Camera.h"
+	"reader.h"
+
+1338609515 c:\users\telunus\projects\flightsim\ship.h
+	"Shape.h"
+	<iostream>
+	<fstream>
+
+1338435149 source:c:\users\telunus\projects\flightsim\ship.cpp
+	"ship.h"
+
+1298095722 source:c:\users\telunus\projects\flightsim\flexibleexeption.cpp
+	"FlexibleExeption.h"
+
+1323489275 source:c:\users\telunus\projects\flightsim\shape.c
+
+1338176571 source:c:\users\telunus\projects\flightsim\shape.cpp
+	"Shape.h"
+
+1338176571 c:\users\telunus\projects\flightsim\shape.h
+	"ColoredPoint.h"
+	<gl/gl.h>
+	"Matrix.h"
+
+1298092122 source:c:\windows.old\documents and settings\blue\my documents\code\matrixopps\flexibleexeption.cpp
+	"FlexibleExeption.h"
+
+1298092106 c:\windows.old\documents and settings\blue\my documents\code\matrixopps\flexibleexeption.h
+	<exception>
+	<string>
+
+1299182125 source:c:\windows.old\documents and settings\blue\my documents\code\matrixopps\mathvector.cpp
+	"MathVector.h"
+
+1299182069 c:\windows.old\documents and settings\blue\my documents\code\matrixopps\mathvector.h
+	<iostream>
+	<sstream>
+	<vector>
+	<math.h>
+	"FlexibleExeption.h"
+
+1307588247 source:c:\windows.old\documents and settings\blue\my documents\code\matrixopps\matrix.cpp
+	"Matrix.h"
+
+1307586322 c:\windows.old\documents and settings\blue\my documents\code\matrixopps\matrix.h
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<math.h>
+	"MathVector.h"
+
+1338176144 c:\users\telunus\projects\flightsim\coloredpoint.h
+	"Matrix.h"
+
+1338176123 source:c:\users\telunus\projects\flightsim\coloredpoint.cpp
+	"ColoredPoint.h"
+
+1338609598 source:c:\users\telunus\projects\flightsim\camera.cpp
+	"Camera.h"
+
+1338176688 c:\users\telunus\projects\flightsim\camera.h
+	"Matrix.h"
+	"ColoredPoint.h"
+	"Shape.h"
+	<gl/gl.h>
+
+1338520968 source:c:\users\telunus\projects\flightsim\reader.cpp
+	"reader.h"
+
+1338521246 c:\users\telunus\projects\flightsim\reader.h
+	<iostream>
+	<fstream>
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<sstream>
+	<string>
+

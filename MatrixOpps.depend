@@ -1,0 +1,230 @@
+# depslib dependency file v1.0
+1297033099 source:/home/telunus/Prog/MatrixOpps/MathVector.cpp
+	"MathVector.h"
+	"MathVector.h"
+
+1336780072 r.h"
+
+1297033180 /home/telunus/Prog/MatrixOpps/MathVector.h
+	<iostream>
+	<sstream>
+	<vector>
+	<math.h>
+	<iostream>
+	<sstream>
+	<vector>
+	<math.h>
+
+1336783613 
+
+1297035100 source:/home/telunus/Prog/MatrixOpps/Matrix.cpp
+	"Matrix.h"
+	"Matrix.h"
+
+1297403309 /home/telunus/Prog/MatrixOpps/Matrix.h
+	<iostream>
+	<vector>
+	<math.h>
+	"MathVector.h"
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<math.h>
+	"MathVector.h"
+
+1297039511 source:/home/telunus/Prog/MatrixOpps/MatrixOpps.cpp
+	<iostream>
+	<vector>
+	<math.h>
+	"Matrix.h"
+	<iostream>
+	<vector>
+	<math.h>
+	"Matrix.h"
+
+1297456834 source:e:\stuff\projects\matrixopps\matrix.cpp
+	"Matrix.h"
+
+1297456390 e:\stuff\projects\matrixopps\matrix.h
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<math.h>
+	"MathVector.h"
+
+1297455980 e:\stuff\projects\matrixopps\mathvector.h
+	<iostream>
+	<sstream>
+	<vector>
+	<math.h>
+
+1297403924 source:e:\stuff\projects\matrixopps\matrixopps.cpp
+	<iostream>
+	<vector>
+	<math.h>
+	"Matrix.h"
+
+1297033098 source:e:\stuff\projects\matrixopps\mathvector.cpp
+	"MathVector.h"
+
+1297970650 source:/Volumes/CLEARLYBLUE/stuff/projects/MatrixOpps/MathVector.cpp
+	"MathVector.h"
+
+1298093044 /Volumes/CLEARLYBLUE/stuff/projects/MatrixOpps/MathVector.h
+	<iostream>
+	<sstream>
+	<vector>
+	<math.h>
+	"FlexibleExeption.h"
+
+1298095722 xeption.h"
+
+1298092652 source:/Volumes/CLEARLYBLUE/stuff/projects/MatrixOpps/MatrixOpps.cpp
+	<iostream>
+	<vector>
+	<math.h>
+	"Matrix.h"
+
+1297968954 /Volumes/CLEARLYBLUE/stuff/projects/MatrixOpps/Matrix.h
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<math.h>
+	"MathVector.h"
+
+1298091374 source:/Volumes/CLEARLYBLUE/stuff/projects/MatrixOpps/Matrix.cpp
+	"Matrix.h"
+
+1298092106 /Volumes/CLEARLYBLUE/stuff/projects/MatrixOpps/FlexibleExeption.h
+	<exception>
+	<string>
+
+1298092122 source:/Volumes/CLEARLYBLUE/stuff/projects/MatrixOpps/FlexibleExeption.cpp
+	"FlexibleExeption.h"
+
+1298092652 source:i:\documents and settings\blue\my documents\code\matrixopps\matrixopps.cpp
+	<iostream>
+	<vector>
+	<math.h>
+	"Matrix.h"
+
+1299181950 i:\documents and settings\blue\my documents\code\matrixopps\matrix.h
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<math.h>
+	"MathVector.h"
+
+1299182069 i:\documents and settings\blue\my documents\code\matrixopps\mathvector.h
+	<iostream>
+	<sstream>
+	<vector>
+	<math.h>
+	"FlexibleExeption.h"
+
+1298092106 i:\documents and settings\blue\my documents\code\matrixopps\flexibleexeption.h
+	<exception>
+	<string>
+
+1298092122 source:i:\documents and settings\blue\my documents\code\matrixopps\flexibleexeption.cpp
+	"FlexibleExeption.h"
+
+1299182125 source:i:\documents and settings\blue\my documents\code\matrixopps\mathvector.cpp
+	"MathVector.h"
+
+1299185725 source:c:\windows.old\documents and settings\blue\my documents\code\matrixopps\mathvector.cpp
+	"MathVector.h"
+
+1299185669 c:\windows.old\documents and settings\blue\my documents\code\matrixopps\mathvector.h
+	<iostream>
+	<sstream>
+	<vector>
+	<math.h>
+	"FlexibleExeption.h"
+
+1298095706 c:\windows.old\documents and settings\blue\my documents\code\matrixopps\flexibleexeption.h
+	<exception>
+	<string>
+
+1298096252 source:c:\windows.old\documents and settings\blue\my documents\code\matrixopps\matrixopps.cpp
+	<iostream>
+	<vector>
+	<math.h>
+	"Matrix.h"
+
+1307589922 c:\windows.old\documents and settings\blue\my documents\code\matrixopps\matrix.h
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<math.h>
+	"MathVector.h"
+
+1298095722 source:c:\windows.old\documents and settings\blue\my documents\code\matrixopps\flexibleexeption.cpp
+	"FlexibleExeption.h"
+
+1336626082 source:c:\users\telunus\projects\flightsim\mathvector.cpp
+	"MathVector.h"
+
+1336600181 c:\users\telunus\projects\flightsim\mathvector.h
+	<iostream>
+	<sstream>
+	<vector>
+	<math.h>
+	"FlexibleExeption.h"
+
+1323499681 c:\users\telunus\projects\flightsim\flexibleexeption.h
+	<exception>
+	<string>
+
+1336780753 source:c:\users\telunus\projects\flightsim\matrix.cpp
+	"Matrix.h"
+
+1336780072 c:\users\telunus\projects\flightsim\matrix.h
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<math.h>
+	"MathVector.h"
+
+1298095722 source:c:\users\telunus\projects\flightsim\flexibleexeption.cpp
+	"FlexibleExeption.h"
+
+1336783613 source:c:\users\telunus\projects\flightsim\matrixopps.cpp
+	<iostream>
+	<vector>
+	<math.h>
+	"Matrix.h"
+
+1298092122 source:/Volumes/PENDRIVE/FlightSim/FlexibleExeption.cpp
+	"FlexibleExeption.h"
+
+1323496082 /Volumes/PENDRIVE/FlightSim/FlexibleExeption.h
+	<exception>
+	<string>
+
+1338435680 source:/Volumes/PENDRIVE/FlightSim/MathVector.cpp
+	"MathVector.h"
+
+1349562834 /Volumes/PENDRIVE/FlightSim/MathVector.h
+	<iostream>
+	<sstream>
+	<vector>
+	<math.h>
+	"FlexibleExeption.h"
+
+1338518380 source:/Volumes/PENDRIVE/FlightSim/Matrix.cpp
+	"Matrix.h"
+
+1349563026 /Volumes/PENDRIVE/FlightSim/Matrix.h
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<math.h>
+	"MathVector.h"
+
+1337448848 source:/Volumes/PENDRIVE/FlightSim/MatrixOpps.cpp
+	<iostream>
+	<vector>
+	<math.h>
+	"Matrix.h"
+
