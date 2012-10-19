@@ -32,7 +32,7 @@ math_matrix::math_matrix(const vector<vector<double> >& values)
 
 void math_matrix::divide_row(const unsigned int& rowIndex, const double& denominator)
 {
-    if(abs(denominator) < m_tolerance)
+    if(fabs(denominator) < m_tolerance)
     {
         throw FlexibleExeption("Division by zero in divide_row");
     }
@@ -42,7 +42,10 @@ void math_matrix::divide_row(const unsigned int& rowIndex, const double& denomin
     }
     else
     {
-        throw FlexibleExeption("The program tried to divide a row with an invalid row index");
+        std::stringstream errMsg;
+        errMsg << "The program tried to divide a row with an invalid row index: row " << rowIndex
+        << " in matrix with only " << num_rows() << " rows." << std::endl;
+        throw FlexibleExeption(errMsg.str());
     }
 }
 
