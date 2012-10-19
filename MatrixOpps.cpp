@@ -12,6 +12,14 @@ Stream & operator << (Stream & str, const math_vector& input)
     return str;
 }
 
+void checkCondition(bool condition)
+{
+    if(! condition )
+	{
+        throw;
+	}
+}
+
 int main()
 {
 	try
@@ -65,7 +73,7 @@ int main()
     {
     	cout << "Did not get the expected exception";
     }
-    //assert(gotException);
+    checkCondition(gotException);
     math_matrix ident3 = ident(3);
     test_vect = ident3 * test_vect;
 
@@ -78,6 +86,27 @@ int main()
     cout<<"test matrix is "<<test_mat.write();
     cout<<"and its transpose is "<<test_mat.transpose().write();
     cout<<"test matrix * identity is "<<(test_mat*ident(4)).write();
+
+    // some exceptions expected.
+    gotException = false;
+    try {
+        test_mat.divide_row(2, 0);
+    }
+    catch(const FlexibleExeption & divExcep)
+    {
+        gotException = true;
+    }
+    checkCondition(gotException);
+    gotException = false;
+    try
+    {
+        test_mat.divide_row(test_mat.num_rows()+1, 3);
+    }
+    catch( const FlexibleExeption & divExcep)
+    {
+        gotException = true;
+    }
+    checkCondition(gotException);
 
 	vector<double> oset;
 	oset.push_back(0);
