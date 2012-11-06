@@ -1,12 +1,12 @@
 #include "Matrix.h"
+#include "Utils.h"
 
 math_matrix::math_matrix(const vector<math_vector>& values)
 {
-    m_values = values;
+    m_rows = values;
     for(unsigned int i = 0; i < num_rows(); i++)
     {
-    	//cout<<"m_values["<<i<<"] = "<<m_values.at(i).write()<<endl;
-        if (num_collums() != m_values[i].num_elements())
+        if (num_collums() != m_rows[i].num_elements())
         {
             throw FlexibleExeption("the program tried to create a matrix using a vector of math_vectors of different sizes");
         }
@@ -20,7 +20,7 @@ math_matrix::math_matrix(const vector<vector<double> >& values)
     {
         if(math_vector(values[i]).num_elements() == math_vector(values[0]).num_elements())
         {
-            m_values.push_back(math_vector(values[i]));
+            m_rows.push_back(math_vector(values[i]));
         }
         else
         {
@@ -28,6 +28,17 @@ math_matrix::math_matrix(const vector<vector<double> >& values)
         }
     }
     m_tolerance = 1.0e-6;
+}
+
+bool math_matrix::operator==( const math_matrix & rhs) const
+{
+	if( num_rows() != rhs.num_rows()) return false;
+	for( int i=0; i < rhs.num_rows(); i++)
+	{
+		if( ! (m_rows[i] == rhs.m_rows[i])) return false;
+			
+	}
+	return true;
 }
 
 void math_matrix::divide_row(const unsigned int& rowIndex, const double& denominator)
@@ -38,7 +49,7 @@ void math_matrix::divide_row(const unsigned int& rowIndex, const double& denomin
     }
     if (num_rows() > rowIndex)
     {
-        m_values[rowIndex] /= denominator;
+        m_rows[rowIndex] /= denominator;
     }
     else
     {
@@ -53,7 +64,7 @@ void math_matrix::multiply_row(const unsigned int& rowIndex, const double& multi
 {
     if (num_rows() > rowIndex)
     {
-        m_values[rowIndex] *= multiplier;
+        m_rows[rowIndex] *= multiplier;
     }
     else
     {
@@ -67,7 +78,7 @@ void math_matrix::add_row(const unsigned int& augend, const unsigned int& addend
     {
         if(addend < num_rows())
         {
-            m_values[augend]+=m_values[addend];
+            m_rows[augend]+=m_rows[addend];
         }
         else
         {
@@ -86,7 +97,7 @@ void math_matrix::subtract_row(const unsigned int& minuend, const unsigned int& 
     {
         if(minuend < num_rows())
         {
-            m_values[minuend]-=m_values[subtrahend];
+            m_rows[minuend]-=m_rows[subtrahend];
         }
         else
         {
@@ -101,7 +112,7 @@ void math_matrix::subtract_row(const unsigned int& minuend, const unsigned int& 
 
 math_matrix math_matrix::drop_row(const unsigned int& index)const
 {
-    vector <math_vector> new_values(m_values);
+    vector <math_vector> new_values(m_rows);
     new_values.erase(new_values.begin() + index);
     //for (unsigned int i = 0; i < new_values.size(); i++) debuging lines
     //{
@@ -114,7 +125,7 @@ math_matrix math_matrix::drop_row(const unsigned int& index)const
 
 math_matrix math_matrix::drop_collum(const unsigned int& index)const
 {
-    math_matrix new_values(m_values);
+    math_matrix new_values(m_rows);
     new_values = new_values.transpose();
     new_values = new_values.drop_row(index);
     new_values = new_values.transpose();
@@ -126,7 +137,7 @@ math_vector math_matrix::collum(const unsigned int& index)const
 	vector<double> result;
 	for (unsigned int i = 0; i < num_rows(); i++)
 	{
-		result.push_back(m_values.at(i).m_values.at(index));
+		result.push_back(m_rows.at(i).m_values.at(index));
 	}
 	return math_vector(result);
 }
@@ -157,13 +168,12 @@ bool math_matrix::has_inverse()const
 
 math_vector math_matrix::operator *(const math_vector& multiplier)const
 {
-    vector<double> value(m_values.size(),0);
+    vector<double> value(m_rows.size(),0);
     if(multiplier.num_elements() == num_collums())
     {
-        for(unsigned int i = 0; i<m_values.size(); i++)
+        for(unsigned int i = 0; i<m_rows.size(); i++)
         {
-            value[i] = m_values[i].dot(multiplier);
-            //cout<<"value "<<i<<" is "<<value[i]<<endl;
+            value[i] = m_rows[i].dot(multiplier);
         }
     }
     else
@@ -177,18 +187,15 @@ math_matrix math_matrix::operator *(const math_matrix& multiplier) const//using 
 {
     math_matrix B = multiplier;//.transpose();
     vector<math_vector> values;
-    math_matrix A(m_values);
-    //if (A.transpose().m_values.size() == multiplier.m_values.size())
+    math_matrix A(m_rows);
     if(num_collums() == multiplier.num_rows())
     {
-        for(unsigned int i = 0; i < m_values.size(); i++)//num_rows()
+        for(unsigned int i = 0; i < m_rows.size(); i++)//num_rows()
         {
             vector<double> current_row;
-            for(unsigned int j = 0; j < B.m_values.at(0).m_values.size(); j++)//num_collums()
+            for(unsigned int j = 0; j < B.m_rows.at(0).m_values.size(); j++)//num_collums()
             {
-            	//cout<<"A's row "<<i<<" is "<<m_values.at(i).write()<<endl;
-            	//cout<<"B's collum "<<j<<" is "<<B.collum(j).write()<<endl;
-                current_row.push_back(m_values[i].dot(B.collum(j)));
+                current_row.push_back(m_rows[i].dot(B.collum(j)));
             }
             values.push_back(math_vector(current_row));
         }
@@ -203,12 +210,12 @@ math_matrix math_matrix::operator *(const math_matrix& multiplier) const//using 
 
 unsigned int math_matrix::num_rows()const
 {
-    return m_values.size();
+    return m_rows.size();
 }
 
 unsigned int math_matrix::num_collums() const
 {
-    return m_values[0].m_values.size();
+    return m_rows[0].num_elements();
 }
 
 bool math_matrix::same_size(const math_matrix& refrance)const
@@ -225,9 +232,9 @@ void math_matrix::operator +=(const math_matrix& addend)
 {
     if(same_size(addend))
     {
-        for(unsigned int i = 0; i < m_values.size(); i++)
+        for(unsigned int i = 0; i < m_rows.size(); i++)
         {
-            m_values[i] += addend.m_values[i];
+            m_rows[i] += addend.m_rows[i];
         }
     }
     else
@@ -238,7 +245,7 @@ void math_matrix::operator +=(const math_matrix& addend)
 
 math_matrix math_matrix::operator +(const math_matrix& addend)const
 {
-    math_matrix value(m_values);
+    math_matrix value(m_rows);
     if (same_size(addend))
     {
         value += addend;
@@ -254,9 +261,9 @@ void math_matrix::operator -=(const math_matrix& subtrahend)
 {
     if (same_size(subtrahend))
     {
-        for(unsigned int i = 0; i < m_values.size(); i++)
+        for(unsigned int i = 0; i < m_rows.size(); i++)
         {
-            m_values[i] -= subtrahend.m_values[i];
+            m_rows[i] -= subtrahend.m_rows[i];
         }
     }
     else
@@ -267,7 +274,7 @@ void math_matrix::operator -=(const math_matrix& subtrahend)
 
 math_matrix math_matrix::operator -(const math_matrix& subtrahend)const
 {
-    math_matrix value(m_values);
+    math_matrix value(m_rows);
     if (same_size(subtrahend))
     {
         value -= subtrahend;
@@ -281,39 +288,39 @@ math_matrix math_matrix::operator -(const math_matrix& subtrahend)const
 
 math_matrix math_matrix::inverse()const
 {
-    math_matrix inverse = ident(m_values.size());
+    math_matrix inverse = ident(m_rows.size());
     cout<<inverse.write();
-    math_matrix accountant(m_values);
+    math_matrix accountant(m_rows);
     cout<<accountant.write();
     if(is_square())
     {
         if(has_inverse())
         {
-            for(unsigned int i = 0; i<m_values.size(); i++) //walk collum by collum
+            for(unsigned int i = 0; i<m_rows.size(); i++) //walk collum by collum
             {
-                double diagonal_element = accountant.m_values[i].m_values[i];
+                double diagonal_element = accountant.m_rows[i].m_values[i];
                 while((diagonal_element <= m_tolerance) && (diagonal_element >= (-1*m_tolerance)) )
                 {
                     int rondom_value = rand()%num_rows();
-                    accountant.m_values[i]+=accountant.m_values[rondom_value];
-                    accountant.m_values[i]+=accountant.m_values[rondom_value];
-                    diagonal_element = accountant.m_values[i].m_values[i];
+                    accountant.m_rows[i]+=accountant.m_rows[rondom_value];
+                    accountant.m_rows[i]+=accountant.m_rows[rondom_value];
+                    diagonal_element = accountant.m_rows[i].m_values[i];
                 }
 
                 accountant.divide_row(i,diagonal_element);//make sure diagonal element in this collum is a 1
                 inverse.divide_row(i,diagonal_element);
 
-                for(unsigned int j = 0; j<m_values.size(); j++) //walk row by row
+                for(unsigned int j = 0; j<m_rows.size(); j++) //walk row by row
                 {
-                    double ith_element = accountant.m_values[j].m_values[i];
+                    double ith_element = accountant.m_rows[j].m_values[i];
                     if((ith_element >= m_tolerance) || (ith_element <= (-1*m_tolerance) ) )
                     {
-                        accountant.divide_row(j,accountant.m_values[j].m_values[i]);//devide row by its element from this collum
-                        inverse.divide_row(j,accountant.m_values[j].m_values[i]);
+                        accountant.divide_row(j,accountant.m_rows[j].m_values[i]);//devide row by its element from this collum
+                        inverse.divide_row(j,accountant.m_rows[j].m_values[i]);
                         if(i != j)//if we are not dealing with an element on a diagonal
                         {
-                            accountant.m_values[j]-=accountant.m_values[j];//subtract the row on that has a diagonal in this collum from this row
-                            inverse.m_values[j]-=accountant.m_values[j];
+                            accountant.m_rows[j]-=accountant.m_rows[j];//subtract the row on that has a diagonal in this collum from this row
+                            inverse.m_rows[j]-=accountant.m_rows[j];
                             //accountant.subtract_row(j,i);
                             //inverse.subtract_row(j,i);
                         }
@@ -342,8 +349,8 @@ double math_matrix::determinant()const
     {
         if(mat_size == 2)
         {
-            det += (m_values[0].m_values[0]) * (m_values[1].m_values[1]);
-            det -= (m_values[1].m_values[0]) * (m_values[0].m_values[1]);
+            det += (m_rows[0].m_values[0]) * (m_rows[1].m_values[1]);
+            det -= (m_rows[1].m_values[0]) * (m_rows[0].m_values[1]);
         }
         else
         {
@@ -354,11 +361,11 @@ double math_matrix::determinant()const
                 	//double result = m_values.at(0).m_values.at(i);//debugging lines
                 	//math_matrix nextMatrix = drop_row(0).drop_collum(i);
                 	//det += result*nextMatrix.determinant();
-                    det += (m_values[0].m_values[i]) * drop_row(0).drop_collum(i).determinant();
+                    det += (m_rows[0].m_values[i]) * drop_row(0).drop_collum(i).determinant();
                 }
                 else
                 {
-                    det += (m_values[0].m_values[i]) * drop_row(0).drop_collum(i).determinant();
+                    det += (m_rows[0].m_values[i]) * drop_row(0).drop_collum(i).determinant();
                 }
             }
         }
@@ -373,12 +380,12 @@ double math_matrix::determinant()const
 math_matrix math_matrix::transpose()const
 {
     vector<math_vector> values;
-    for(unsigned int i = 0; i < m_values[0].m_values.size(); i++)//walk collum by collum
+    for(unsigned int i = 0; i < m_rows[0].m_values.size(); i++)//walk collum by collum
     {
         vector<double> input_collum;//collum of this, row of transpose
-        for(unsigned int j = 0; j < m_values.size(); j++)//walk row by row
+        for(unsigned int j = 0; j < m_rows.size(); j++)//walk row by row
         {
-            input_collum.push_back(m_values[j].m_values[i]);
+            input_collum.push_back(m_rows[j].m_values[i]);
         }
         math_vector output_row(input_collum);//create row of transpose from collum of this
         values.push_back(output_row);
@@ -404,9 +411,9 @@ string math_matrix::write()const
 {
     stringstream value;
     value<<endl;
-    for(unsigned int i = 0;  i < m_values.size(); i++)
+    for(unsigned int i = 0;  i < m_rows.size(); i++)
     {
-        value<<m_values[i]<<endl;//
+        value<<m_rows[i]<<endl;//
     }
     return value.str();
 }

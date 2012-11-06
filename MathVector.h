@@ -38,6 +38,7 @@ class math_vector//states are blank(can't fail), failable(needs checking), check
         unsigned int num_elements()const;
         double getValue(const int&)const;//failable
 
+		bool operator==(const math_vector & rhs) const;
 
 
         friend class math_matrix;

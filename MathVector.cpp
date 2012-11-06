@@ -1,4 +1,5 @@
 #include "MathVector.h"
+#include "Utils.h"
 
 math_vector::math_vector(int VectorSize)
 :m_values(VectorSize,0)
@@ -10,6 +11,20 @@ math_vector::math_vector(const vector<double> & values)
 :m_values(values)
 {
     //m_values = values;
+}
+
+bool math_vector::operator==(const math_vector & rhs) const
+{
+	if( this->num_elements() != rhs.num_elements()) return false;
+	bool areEqual = true;
+	for( int i = 0; i < m_values.size(); i++)
+	{
+		if (!feq(this->getValue(i), rhs.getValue(i)) ) {
+			areEqual = false;
+			break;
+		}
+	}
+	return areEqual;
 }
 
 unsigned int math_vector::num_elements()const

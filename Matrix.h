@@ -15,6 +15,8 @@ class math_matrix//states are blank(can't fail), failable(needs checking), check
     public:
         math_matrix(const vector<math_vector>&);//handled
         math_matrix(const vector<vector<double> >&);//handled
+		
+		bool operator==( const math_matrix & rhs) const;
 
         void divide_row(const unsigned int& rowIndex, const double& denominator);//handled
         void multiply_row(const unsigned int& rowIndex, const double& multiplier);//handled
@@ -45,7 +47,7 @@ class math_matrix//states are blank(can't fail), failable(needs checking), check
 
         string write()const;
     private:
-        vector<math_vector> m_values;
+        vector<math_vector> m_rows;
         double m_tolerance;
 };
 

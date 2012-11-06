@@ -1,7 +1,10 @@
 #include <iostream>
 #include <vector>
-#include <math.h>
+#include <cmath>
+
 #include "Matrix.h"
+#include "Utils.h"
+
 using namespace std;
 
 
@@ -19,6 +22,7 @@ void checkCondition(bool condition)
         throw;
 	}
 }
+
 
 int main()
 {
@@ -48,13 +52,16 @@ int main()
     bar.push_back(first);
     bar.push_back(second);
     bar.push_back(third);
-//math_matrix test_mat(bar);
+	math_matrix bar_mat(bar);
+	
     math_matrix test_mat = ident(4);
-    cout<<"test matrix is "<<test_mat.write();
+    checkCondition(feq(test_mat.determinant(), 1.0));
+	checkCondition(!(test_mat == bar_mat));
+	
+	
     math_matrix inverted = test_mat.inverse();
-    cout<<", its inverse is"<<inverted.write();
-    double det = test_mat.determinant();
-    cout<<"and its determinant is "<<det<<endl;
+	checkCondition(feq(inverted.determinant(), 1.0));
+	checkCondition(test_mat == inverted);
 
     math_vector test_vect = (first*10.0 + second/3.0 + third +third*-5);
     cout<<"test vector is "<<test_vect<<" test_vect dot test_vect = "<<test_vect.dot(test_vect)<<endl;
