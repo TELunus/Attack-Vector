@@ -110,16 +110,17 @@ void math_matrix::subtract_row(const unsigned int& minuend, const unsigned int& 
     }
 }
 
-math_matrix math_matrix::drop_row(const unsigned int& index)const
+math_matrix math_matrix::drop_row( unsigned int index)const
 {
-    vector <math_vector> new_values(m_rows);
+    if( index >= num_rows() )
+	{
+		stringstream errMsg;
+		errMsg << "Trying to drop row" << index << "in matrix with only " << num_rows() << "rows";
+		throw FlexibleExeption(errMsg.str());
+	}
+	vector <math_vector> new_values(m_rows);
     new_values.erase(new_values.begin() + index);
-    //for (unsigned int i = 0; i < new_values.size(); i++) debuging lines
-    //{
-    //	cout<<"new_values ["<<i<<"] = "<<new_values.at(i).write()<<endl;
-    //}
-    //math_matrix result(new_values);
-    //return result;
+
     return(math_matrix(new_values));
 }
 

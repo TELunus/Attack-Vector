@@ -22,7 +22,7 @@ class math_matrix//states are blank(can't fail), failable(needs checking), check
         void multiply_row(const unsigned int& rowIndex, const double& multiplier);//handled
         void add_row(const unsigned int&,const unsigned  int&);//handled
         void subtract_row(const unsigned int&,const unsigned  int&);//handled
-        math_matrix drop_row(const unsigned int&)const;
+        math_matrix drop_row( unsigned int )const;
         math_matrix drop_collum(const unsigned int&)const;
 
         bool is_square()const;

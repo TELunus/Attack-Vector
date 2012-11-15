@@ -7,6 +7,17 @@
 
 using namespace std;
 
+#define checkExceptionThrown1Arg(exceptionType, objname, fname, arg1) { \
+    bool macroGotException = false;			\
+    try {									\
+        objname.fname( (arg1) );			\
+    }										\
+    catch(const exceptionType & macroExcep) \
+    {										\
+        macroGotException = true;			\
+    }										\
+    checkCondition(macroGotException); }
+	
 #define checkExceptionThrown2Args(exceptionType, objname, fname, arg1, arg2) { \
     bool macroGotException = false;			\
     try {									\
@@ -114,6 +125,14 @@ int main()
     // some exceptions expected.
 	checkExceptionThrown2Args(FlexibleExeption, test_mat, divide_row, 2, 0)
 	checkExceptionThrown2Args(FlexibleExeption, test_mat, divide_row, test_mat.num_rows()+1, 3)
+	
+	//drop_row
+	checkExceptionThrown1Arg(FlexibleExeption, ident3, drop_row, 10)
+	math_matrix droppedRow = ident3.drop_row(0);
+	checkCondition(droppedRow.num_rows() == 2);
+	math_matrix droppedRowAndColumn = droppedRow.drop_collum(0);
+	checkCondition(droppedRowAndColumn == ident(2));
+	checkExceptionThrown1Arg(FlexibleExeption, droppedRowAndColumn, drop_collum, 2)
 
 	vector<double> oset;
 	oset.push_back(0);
