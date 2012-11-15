@@ -115,7 +115,7 @@ math_matrix math_matrix::drop_row( unsigned int index)const
     if( index >= num_rows() )
 	{
 		stringstream errMsg;
-		errMsg << "Trying to drop row" << index << "in matrix with only " << num_rows() << "rows";
+		errMsg << "Trying to drop row " << index << "in matrix with only " << num_rows() << " rows.";
 		throw FlexibleExeption(errMsg.str());
 	}
 	vector <math_vector> new_values(m_rows);
@@ -135,6 +135,13 @@ math_matrix math_matrix::drop_collum(const unsigned int& index)const
 
 math_vector math_matrix::collum(const unsigned int& index)const
 {
+	if( index >= num_rows() )
+	{
+		stringstream errMsg;
+		errMsg << "Trying to extract column " << index << " in matrix with only " << num_rows() << " columns.";
+		throw FlexibleExeption(errMsg.str());
+	}
+	
 	vector<double> result;
 	for (unsigned int i = 0; i < num_rows(); i++)
 	{

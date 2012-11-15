@@ -133,6 +133,11 @@ int main()
 	math_matrix droppedRowAndColumn = droppedRow.drop_collum(0);
 	checkCondition(droppedRowAndColumn == ident(2));
 	checkExceptionThrown1Arg(FlexibleExeption, droppedRowAndColumn, drop_collum, 2)
+	
+	//collum
+	math_matrix ident10 = ident(10);
+	checkExceptionThrown1Arg(FlexibleExeption, ident10, collum, 10)
+
 
 	vector<double> oset;
 	oset.push_back(0);
