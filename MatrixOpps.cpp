@@ -7,6 +7,18 @@
 
 using namespace std;
 
+#define checkExceptionThrown2Args(exceptionType, objname, fname, arg1, arg2) { \
+    bool macroGotException = false;			\
+    try {									\
+        objname.fname( (arg1), (arg2));		\
+    }										\
+    catch(const exceptionType & macroExcep) \
+    {										\
+        macroGotException = true;			\
+    }										\
+    checkCondition(macroGotException); }
+
+
 
 template <typename Stream>
 Stream & operator << (Stream & str, const math_vector& input)
@@ -34,18 +46,22 @@ int main()
     foo.push_back(0);
     foo.push_back(0);
     math_vector first(foo);
-    cout<<"first is "<<first<<endl;
+	checkCondition(feq(first.magnatude(), 1.0));
 
     foo[0] = 0;
     foo[1] = 10;
     foo[2] = 0;
     math_vector second(foo);
-    cout<<"second is "<<second<<endl;
+	checkCondition(feq(second.magnatude()*second.magnatude(), second.dot(second)) );
+	checkCondition(feq(second.dot(first), 0));
+
     foo[0] = 0;
     foo[1] = 0;
     foo[2] = 11;
     math_vector third(foo);
-    cout<<"third is "<<third<<endl;
+    checkCondition( feq(third.magnatude()* third.magnatude(), third.dot(third)));
+	checkCondition(feq(third.dot(first), 0));
+	checkCondition(feq(third.dot(second),0));
 
 
     vector <math_vector> bar ;
@@ -64,8 +80,10 @@ int main()
 	checkCondition(test_mat == inverted);
 
     math_vector test_vect = (first*10.0 + second/3.0 + third +third*-5);
-    cout<<"test vector is "<<test_vect<<" test_vect dot test_vect = "<<test_vect.dot(test_vect)<<endl;
+	double dotProduct = test_vect.dot(test_vect);
+    cout<<"test vector is "<<test_vect<<" test_vect dot test_vect = "<<dotProduct<<endl;
     cout<<"magnatude of testvector is "<<test_vect.magnatude()<<endl;
+	checkCondition(feq(test_vect.magnatude()*test_vect.magnatude(), dotProduct));
     bool gotException = false;
     try
     {
@@ -76,44 +94,26 @@ int main()
         gotException = true;
         //cout<<"got expected exception"
     }
-    if (!gotException)
-    {
-    	cout << "Did not get the expected exception";
-    }
     checkCondition(gotException);
     math_matrix ident3 = ident(3);
-    test_vect = ident3 * test_vect;
+    math_vector test_vect_duped = ident3 * test_vect;
 
-    cout<<"test vector is "<<test_vect<<endl;
+    checkCondition(test_vect_duped == test_vect);
 
 
-    test_mat.divide_row(2,5);
-    test_mat.multiply_row(1,2);
+    math_matrix test_mat_copy(test_mat);
+	test_mat.divide_row(2,5);
+    test_mat.multiply_row(2,5);
+	checkCondition(test_mat_copy == test_mat);
+	
     test_mat.add_row(0,2);
-    cout<<"test matrix is "<<test_mat.write();
-    cout<<"and its transpose is "<<test_mat.transpose().write();
-    cout<<"test matrix * identity is "<<(test_mat*ident(4)).write();
+	checkCondition(! (test_mat_copy == test_mat));
+	test_mat.subtract_row(0, 2);
+	checkCondition(test_mat_copy == test_mat);
 
     // some exceptions expected.
-    gotException = false;
-    try {
-        test_mat.divide_row(2, 0);
-    }
-    catch(const FlexibleExeption & divExcep)
-    {
-        gotException = true;
-    }
-    checkCondition(gotException);
-    gotException = false;
-    try
-    {
-        test_mat.divide_row(test_mat.num_rows()+1, 3);
-    }
-    catch( const FlexibleExeption & divExcep)
-    {
-        gotException = true;
-    }
-    checkCondition(gotException);
+	checkExceptionThrown2Args(FlexibleExeption, test_mat, divide_row, 2, 0)
+	checkExceptionThrown2Args(FlexibleExeption, test_mat, divide_row, test_mat.num_rows()+1, 3)
 
 	vector<double> oset;
 	oset.push_back(0);
