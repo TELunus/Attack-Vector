@@ -1,6 +1,15 @@
 #include "Matrix.h"
 #include "Utils.h"
 
+/*
+Some thoughts on class design.
+* Consistency - sometimes methods modifying underlying, other times they return a new matrix
+* Error messages should include argument values when argument values are source of problem
+* Precondition checks at beginning
+* All shops I've worked at use camel case instead of _ for method names
+* operator== very useful for unit testing 
+*/
+
 math_matrix::math_matrix(const vector<math_vector>& values)
 {
     m_rows = values;
@@ -166,7 +175,8 @@ bool math_matrix::has_inverse()const
     if(is_square())
     {
         value = true;
-        if((determinant() < m_tolerance)&&(determinant() > 0-m_tolerance))
+		double det = determinant();
+        if(( det< m_tolerance)&&(det > 0-m_tolerance))
         {
             value = false;
         }
@@ -373,7 +383,7 @@ double math_matrix::determinant()const
                 }
                 else
                 {
-                    det += (m_rows[0].m_values[i]) * drop_row(0).drop_collum(i).determinant();
+                    det -= (m_rows[0].m_values[i]) * drop_row(0).drop_collum(i).determinant();
                 }
             }
         }
