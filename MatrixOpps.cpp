@@ -46,6 +46,18 @@ void checkCondition(bool condition)
 	}
 }
 
+vector <math_vector> makeVectorsFromArray( double * elements, int numRows, int numColumns)
+{
+	vector <math_vector> theVectors ;
+	for (int rowIndex = 0; rowIndex < numRows; rowIndex++) {
+		vector <double> nextRow;
+		for( int columnIndex = 0; columnIndex < numColumns; columnIndex++) {
+			nextRow.push_back(*elements++);		
+		}
+		theVectors.push_back(nextRow);
+	}
+	return theVectors;
+}
 
 int main()
 {
@@ -137,7 +149,50 @@ int main()
 	//collum
 	math_matrix ident10 = ident(10);
 	checkExceptionThrown1Arg(FlexibleExeption, ident10, collum, 10)
-
+	math_matrix moddedIdent10 = ident10;
+	moddedIdent10.multiply_row(3, 10);
+	math_vector column3 = moddedIdent10.collum(3);
+	checkCondition(column3.getValue(3) == 10);
+	
+	//is_square
+	checkCondition(! droppedRow.is_square());
+	checkCondition(moddedIdent10.is_square());
+	checkCondition(!moddedIdent10.drop_collum(0).is_square());
+	
+	// has_inverse
+	math_matrix ident4 = ident(4);
+	checkCondition( ! droppedRow.has_inverse() );
+	checkCondition( ident4.has_inverse() );
+	math_matrix moddedIdent4 = ident4;
+	moddedIdent4.multiply_row(3, 0);
+	checkCondition( ! moddedIdent4.has_inverse() );
+	
+	//operator matrix * vector
+	const int numRows = 3;
+	const int numColumns = 3;
+	double matrixElements[numRows * numColumns] = {1,2,3, 10, -5, 14, 11, -3, 17};
+	vector <math_vector> noZerosLinearlyDependentRows = makeVectorsFromArray(matrixElements, numRows, numColumns);
+	math_matrix noZerosLinearlyDependent(noZerosLinearlyDependentRows);
+	checkCondition(! noZerosLinearlyDependent.has_inverse() );
+	for( int i = 0; i < numColumns; i++)
+	{
+		math_vector ei = ident(3).collum(i);
+		math_vector nextColumn = noZerosLinearlyDependent * ei;
+		checkCondition(nextColumn == noZerosLinearlyDependent.collum(i));
+	}
+	
+	// operator matrix * matrix
+	double matrix2x3Elements[ 2*numColumns] = {1, 0, 0, 0, 1, 0};
+	vector <math_vector> matrix2x3 = makeVectorsFromArray(matrix2x3Elements, 2, numColumns);
+	checkCondition(! matrix2x3.has_inverse())
+	bool exceptionThrown = false;
+	try {
+		math_matrix badM = noZerosLinearlyDependent * matrix2x3;
+	}
+	catch (FlexibleExeption anExcep) {
+		exceptionThrown = true;
+	}
+	checkCondition( exceptionThrown );
 
 	vector<double> oset;
 	oset.push_back(0);
