@@ -1,6 +1,8 @@
 #include "MathVector.h"
 #include "Utils.h"
 
+static double sEFFECTIVELY_ZERO = 1e-12;
+
 math_vector::math_vector(int VectorSize)
 :m_values(VectorSize,0)
 {
@@ -89,7 +91,7 @@ math_vector math_vector::parallel(const math_vector& source)const
 	    result *= 0;
 	}
 	//cout<<"input: "<<source.write()<<"		me:"<<write()<<"		output: "<<source.write()<<endl<<endl;
-return source;
+return result;
 }
 
 math_vector math_vector::perpendicular(const math_vector& source)const
@@ -210,7 +212,29 @@ double math_vector::getValue(const int& index)const
 
 math_vector math_vector::rotate(const math_vector& offset, const math_vector& displacement)const
 {
-    cout<<"rotate"<<endl;
+    if( this->num_elements() != offset.num_elements() )
+	{
+        std::stringstream errMsg;
+        errMsg << "math_vector::rotate called with offset of size " << offset.num_elements()
+			<< " on vector of size  " << this->num_elements() 
+			<< ".  They must be of the same dimension." << std::endl;		
+		throw FlexibleExeption(errMsg.str());
+	}
+	if( offset.num_elements() != displacement.num_elements() )
+	{
+        std::stringstream errMsg;
+        errMsg << "math_vector::rotate called with offset of size " << offset.num_elements()
+			<< " and displacment of size  " << displacement.num_elements() 
+			<< ".  They must be of the same dimension." << std::endl;		
+		throw FlexibleExeption(errMsg.str());
+	}
+	
+	if( (offset.magnatude() < sEFFECTIVELY_ZERO) || (displacement.magnatude() < sEFFECTIVELY_ZERO))
+	{
+		return math_vector(*this);
+	}
+	
+	cout<<"rotate"<<endl;
     double theta = (displacement.perpendicular(offset).magnatude())/(offset.magnatude());
     theta /= 10;
 

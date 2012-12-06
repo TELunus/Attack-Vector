@@ -59,8 +59,48 @@ vector <math_vector> makeVectorsFromArray( double * elements, int numRows, int n
 	return theVectors;
 }
 
+void test_math_vector()
+{
+	try 
+	{
+		// start with the most complex method, rotate
+		//math_vector math_vector::rotate(const math_vector& offset, const math_vector& displacement)
+		// first we need an interesting vector
+		double linDepElements[] = {1,2,3, 13, 12, 10, 14, 14, 13};
+		vector<math_vector> linDepMat = makeVectorsFromArray(linDepElements, 3, 3);
+		math_vector baseVector = linDepMat.at(0);
+		math_vector secondVector = linDepMat.at(1);
+		double zeroes[] = {0.0, 0.0, 0.0, 0.0};
+		vector<math_vector> zeroVectors = makeVectorsFromArray(zeroes, 1, 4);
+		math_vector zero4Vector = zeroVectors.at(0);
+		
+		vector<math_vector> zero3Vectors = makeVectorsFromArray(zeroes, 1, 3);
+		math_vector zero3Vector = zero3Vectors.at(0);
+		
+		// OK, check some error conditions
+		checkExceptionThrown2Args(FlexibleExeption, baseVector, rotate, baseVector, zero4Vector);
+		checkExceptionThrown2Args(FlexibleExeption, baseVector, rotate, zero4Vector, zero4Vector);
+		
+		math_vector baseRotatedAboutZero = baseVector.rotate(zero3Vector, secondVector);
+		checkCondition(baseVector == baseRotatedAboutZero);
+		math_vector baseRotatedByZero = baseVector.rotate( secondVector, zero3Vector);
+		checkCondition( baseVector == baseRotatedByZero );
+
+	}
+ catch(FlexibleExeption err)
+    {
+    	cout<<err.what();
+    }
+    catch(...)
+    {
+    	cout<<"unknown exeption thrown";
+    }
+}
+
 int main()
 {
+	test_math_vector();
+	
 	try
 	{
 
@@ -183,8 +223,9 @@ int main()
 	
 	// operator matrix * matrix
 	double matrix2x3Elements[ 2*numColumns] = {1, 0, 0, 0, 1, 0};
-	vector <math_vector> matrix2x3 = makeVectorsFromArray(matrix2x3Elements, 2, numColumns);
-	checkCondition(! matrix2x3.has_inverse())
+	vector <math_vector> matrix2x3AsVectors = makeVectorsFromArray(matrix2x3Elements, 2, numColumns);
+	math_matrix matrix2x3(matrix2x3AsVectors);
+	checkCondition(! matrix2x3.has_inverse());
 	bool exceptionThrown = false;
 	try {
 		math_matrix badM = noZerosLinearlyDependent * matrix2x3;
