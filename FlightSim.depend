@@ -188,3 +188,89 @@
 1338435150 source:c:\users\telunus\documents\github\attack-vector\ship.cpp
 	"ship.h"
 
+1366438699 source:c:\users\philip\documents\github\attack-vector\camera.cpp
+	"Camera.h"
+
+1366432005 c:\users\philip\documents\github\attack-vector\camera.h
+	"Matrix.h"
+	"ColoredPoint.h"
+	"Shape.h"
+	<gl/gl.h>
+
+1366432005 c:\users\philip\documents\github\attack-vector\matrix.h
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<math.h>
+	"MathVector.h"
+
+1366432005 c:\users\philip\documents\github\attack-vector\mathvector.h
+	<iostream>
+	<sstream>
+	<vector>
+	<math.h>
+	"FlexibleExeption.h"
+
+1366432005 c:\users\philip\documents\github\attack-vector\flexibleexeption.h
+	<exception>
+	<string>
+
+1366438597 c:\users\philip\documents\github\attack-vector\coloredpoint.h
+	"Matrix.h"
+
+1366432005 c:\users\philip\documents\github\attack-vector\shape.h
+	"ColoredPoint.h"
+	<gl/gl.h>
+	"Matrix.h"
+
+1366438659 source:c:\users\philip\documents\github\attack-vector\coloredpoint.cpp
+	"ColoredPoint.h"
+
+1366432005 source:c:\users\philip\documents\github\attack-vector\flexibleexeption.cpp
+	"FlexibleExeption.h"
+
+1366438703 source:c:\users\philip\documents\github\attack-vector\main.cpp
+	<windows.h>
+	<gl/gl.h>
+	"ship.h"
+	"Shape.h"
+	"Camera.h"
+	"reader.h"
+
+1366437167 c:\users\philip\documents\github\attack-vector\ship.h
+	"Shape.h"
+	<iostream>
+	<fstream>
+
+1366432006 c:\users\philip\documents\github\attack-vector\reader.h
+	<iostream>
+	<fstream>
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<sstream>
+	<string>
+
+1366432005 source:c:\users\philip\documents\github\attack-vector\mathvector.cpp
+	"MathVector.h"
+	"Utils.h"
+
+1366432005 c:\users\philip\documents\github\attack-vector\utils.h
+
+1366432005 source:c:\users\philip\documents\github\attack-vector\matrix.cpp
+	"Matrix.h"
+	"Utils.h"
+
+1366432006 source:c:\users\philip\documents\github\attack-vector\reader.cpp
+	"reader.h"
+
+1366432005 source:c:\users\philip\documents\github\attack-vector\shape.cpp
+	"Shape.h"
+
+1366438746 source:c:\users\philip\documents\github\attack-vector\ship.cpp
+	"ship.h"
+
+1366432005 source:c:\users\philip\documents\github\attack-vector\utils.cpp
+	"Utils.h"
+	<cmath>
+

@@ -32,9 +32,10 @@ void camera::draw()const
     for (unsigned int i = 0; i < m_triangles.size(); i++)
     {
         math_vector PointPos = m_triangles.at(i).position();
+        color PointColor = color(m_triangles.at(i).getColor());
         cout<<"before: "<<PointPos.write()<<endl;
         PointPos = convert(PointPos);
-        glColor3d(0.2,0.7,0.9);
+        glColor3d(PointColor.getComponent(0),PointColor.getComponent(1),PointColor.getComponent(2));
         glVertex2d(PointPos.getValue(0), PointPos.getValue(1));
         cout<<"after: "<<PointPos.write()<<endl;
         //cout<<PointPos.getValue(0)<<", "<<PointPos.getValue(1)<<" ";

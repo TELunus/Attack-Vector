@@ -49,13 +49,13 @@ int WINAPI WinMain(HINSTANCE hInstance,
         wcex.hIconSm = LoadIcon(NULL, IDI_APPLICATION);;
 
         vector <ColoredPoint> triangle;
-        ColoredPoint a(-1,0,1,0,0,0);
+        ColoredPoint a(-1,0,1,1,0.7,0.9);
         triangle.push_back(a);
 
-        ColoredPoint b(0,1,1,0,0,0);
+        ColoredPoint b(0,1,1,0,0.7,0.9);
         triangle.push_back(b);
 
-        ColoredPoint c(1,0,1,0,0,0);
+        ColoredPoint c(1,0,1,0,0.7,0.9);
         triangle.push_back(c);
 
         shape drawthing(triangle);
@@ -146,7 +146,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
                 vector<double> the_displacement;
                 the_displacement.push_back(1);
                 the_displacement.push_back(0);
-                the_displacement.push_back(1);
+                the_displacement.push_back(0);
                 math_vector displacement(the_displacement);
                 //cout<<offset.parallel(displacement).write()<<endl;
                 painter.rotate(displacement, offset);
