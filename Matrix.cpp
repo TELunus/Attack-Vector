@@ -306,8 +306,8 @@ math_matrix math_matrix::operator -(const math_matrix& subtrahend)const
 
 math_matrix math_matrix::inverse()const
 {
-    math_matrix inverse = ident(m_rows.size());
-    cout<<inverse.write();
+    math_matrix result = ident(m_rows.size());
+    cout<<result.write();
     math_matrix accountant(m_rows);
     cout<<accountant.write();
     if(is_square())
@@ -326,7 +326,7 @@ math_matrix math_matrix::inverse()const
                 }
 
                 accountant.divide_row(i,diagonal_element);//make sure diagonal element in this collum is a 1
-                inverse.divide_row(i,diagonal_element);
+                result.divide_row(i,diagonal_element);
 
                 for(unsigned int j = 0; j<m_rows.size(); j++) //walk row by row
                 {
@@ -334,13 +334,13 @@ math_matrix math_matrix::inverse()const
                     if((ith_element >= m_tolerance) || (ith_element <= (-1*m_tolerance) ) )
                     {
                         accountant.divide_row(j,accountant.m_rows[j].m_values[i]);//devide row by its element from this collum
-                        inverse.divide_row(j,accountant.m_rows[j].m_values[i]);
+                        result.divide_row(j,accountant.m_rows[j].m_values[i]);
                         if(i != j)//if we are not dealing with an element on a diagonal
                         {
                             accountant.m_rows[j]-=accountant.m_rows[j];//subtract the row on that has a diagonal in this collum from this row
-                            inverse.m_rows[j]-=accountant.m_rows[j];
+                            result.m_rows[j]-=accountant.m_rows[j];
                             //accountant.subtract_row(j,i);
-                            //inverse.subtract_row(j,i);
+                            //result.subtract_row(j,i);
                         }
                     }
                 }
@@ -356,7 +356,7 @@ math_matrix math_matrix::inverse()const
         throw FlexibleExeption("The program tried to take the inverse of a non-square matrix");
     }
 
-    return inverse;
+    return result;
 }
 
 double math_matrix::determinant()const
