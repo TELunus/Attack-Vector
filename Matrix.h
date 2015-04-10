@@ -1,11 +1,11 @@
+#ifndef MATRIX_H
+#define MATRIX_H
+
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
 #include <math.h>
 #include "MathVector.h"
-
-#ifndef MATRIX_H
-#define MATRIX_H
 
 using namespace std;
 
@@ -15,7 +15,7 @@ class math_matrix//states are blank(can't fail), failable(needs checking), check
     public:
         math_matrix(const vector<math_vector>&);//handled
         math_matrix(const vector<vector<double> >&);//handled
-		
+
 		bool operator==( const math_matrix & rhs) const;
 
         void divide_row(const unsigned int& rowIndex, const double& denominator);//handled

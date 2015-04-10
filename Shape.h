@@ -1,9 +1,10 @@
+#ifndef SHAPE_H
+#define SHAPE_H
+
 #include "ColoredPoint.h"
 #include <gl/gl.h>
 #include "Matrix.h"
 
-#ifndef SHAPE_H
-#define SHAPE_H
 class shape
 {
     vector <ColoredPoint> m_triangles;

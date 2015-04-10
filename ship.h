@@ -1,3 +1,6 @@
+#ifndef SHIP_H
+#define SHIP_H
+
 #include "Shape.h"
 #include <iostream>
 #include <fstream>
@@ -14,3 +17,5 @@ class ship
     virtual void update ()=0;
 };
 
+
+#endif // SHIP_H

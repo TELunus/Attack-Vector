@@ -1,3 +1,8 @@
+#ifndef READER_H
+#define READER_H
+
+using namespace std;
+
 #include <iostream>
 #include <fstream>
 #include <iostream>
@@ -5,11 +10,6 @@
 #include <vector>
 #include <sstream>
 #include <string>
-
-using namespace std;
-
-#ifndef READER_H
-#define READER_H
 
 class reader
 {

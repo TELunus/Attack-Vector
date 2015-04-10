@@ -1,6 +1,7 @@
-#include "Matrix.h"
 #ifndef COLOUREDPOINT_H
 #define COLOUREDPOINT_H
+
+#include "Matrix.h"
 
 class color
 {

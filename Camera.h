@@ -1,10 +1,11 @@
+#ifndef CAMERA_H
+#define CAMERA_H
+
 #include "Matrix.h"
 #include "ColoredPoint.h"
 #include "Shape.h"
 #include <gl/gl.h>
 
-#ifndef CAMERA_H
-#define CAMERA_H
 class camera
 {
     math_vector m_position;

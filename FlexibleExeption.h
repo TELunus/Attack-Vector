@@ -1,8 +1,9 @@
+#ifndef FLEXIBLEEXEPTIN_H
+#define FLEXIBLEEXEPTIN_H
+
 #include <exception>
 #include <string>
 
-#ifndef FLEXIBLEEXEPTIN_H
-#define FLEXIBLEEXEPTIN_H
 using namespace std;
 class FlexibleExeption: public exception
 {
