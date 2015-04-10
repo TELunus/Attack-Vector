@@ -39,7 +39,7 @@ math_matrix::math_matrix(const vector<vector<double> >& values):m_rows(),m_toler
 bool math_matrix::operator==( const math_matrix & rhs) const
 {
 	if( num_rows() != rhs.num_rows()) return false;
-	for( int i=0; i < rhs.num_rows(); i++)
+	for( unsigned int i=0; i < rhs.num_rows(); i++)
 	{
 		if( ! (m_rows[i] == rhs.m_rows[i])) return false;
 
