@@ -16,9 +16,6 @@ class ColoredPoint
 
 {
     math_vector m_coords;
-    double m_x;
-    double m_y;
-    double m_z;
     double m_r;
     double m_g;
     double m_b;
