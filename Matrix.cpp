@@ -10,9 +10,8 @@ Some thoughts on class design.
 * operator== very useful for unit testing
 */
 
-math_matrix::math_matrix(const vector<math_vector>& values)
+math_matrix::math_matrix(const vector<math_vector>& values):m_rows(values),m_tolerance(1.0e-6)
 {
-    m_rows = values;
     for(unsigned int i = 0; i < num_rows(); i++)
     {
         if (num_collums() != m_rows[i].num_elements())
@@ -20,10 +19,9 @@ math_matrix::math_matrix(const vector<math_vector>& values)
             throw FlexibleExeption("the program tried to create a matrix using a vector of math_vectors of different sizes");
         }
     }
-    m_tolerance = 1.0e-6;
 }
 
-math_matrix::math_matrix(const vector<vector<double> >& values)
+math_matrix::math_matrix(const vector<vector<double> >& values):m_rows(),m_tolerance(1.0e-6)
 {
     for(unsigned int i = 0; i < values.size(); i++)
     {
@@ -36,7 +34,6 @@ math_matrix::math_matrix(const vector<vector<double> >& values)
             throw FlexibleExeption("the program tried to create a matrix using a vector of vectors, with different sizes, of doubles");
         }
     }
-    m_tolerance = 1.0e-6;
 }
 
 bool math_matrix::operator==( const math_matrix & rhs) const
