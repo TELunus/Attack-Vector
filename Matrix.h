@@ -52,6 +52,5 @@ class math_matrix//states are blank(can't fail), failable(needs checking), check
 };
 
 math_matrix ident(const unsigned int&);
-math_matrix leftRotationMatrix(const math_vector&, const math_vector&);//failable//broken
 math_matrix leftRotMatrix(const math_vector& offset, const math_vector& displacement);
 #endif

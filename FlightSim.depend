@@ -274,3 +274,85 @@
 	"Utils.h"
 	<cmath>
 
+1428708753 source:q:\projects\attack-vector\camera.cpp
+	"Camera.h"
+
+1428711603 q:\projects\attack-vector\camera.h
+	"Matrix.h"
+	"ColoredPoint.h"
+	"Shape.h"
+	<gl/gl.h>
+
+1428712549 q:\projects\attack-vector\matrix.h
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<math.h>
+	"MathVector.h"
+
+1428708753 q:\projects\attack-vector\mathvector.h
+	<iostream>
+	<sstream>
+	<vector>
+	<math.h>
+	"FlexibleExeption.h"
+
+1428708957 q:\projects\attack-vector\flexibleexeption.h
+	<exception>
+	<string>
+
+1428711024 q:\projects\attack-vector\coloredpoint.h
+	"Matrix.h"
+
+1428709032 q:\projects\attack-vector\shape.h
+	"ColoredPoint.h"
+	<gl/gl.h>
+	"Matrix.h"
+
+1428711024 source:q:\projects\attack-vector\coloredpoint.cpp
+	"ColoredPoint.h"
+
+1428708753 source:q:\projects\attack-vector\flexibleexeption.cpp
+	"FlexibleExeption.h"
+
+1428708753 source:q:\projects\attack-vector\main.cpp
+	<windows.h>
+	<gl/gl.h>
+	"ship.h"
+	"Shape.h"
+	"Camera.h"
+	"reader.h"
+
+1428709064 q:\projects\attack-vector\ship.h
+	"Shape.h"
+	<iostream>
+	<fstream>
+
+1428708992 q:\projects\attack-vector\reader.h
+	<iostream>
+	<fstream>
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<sstream>
+	<string>
+
+1428708753 source:q:\projects\attack-vector\mathvector.cpp
+	"MathVector.h"
+	"Utils.h"
+
+1428709139 q:\projects\attack-vector\utils.h
+
+1428708753 source:q:\projects\attack-vector\reader.cpp
+	"reader.h"
+
+1428708753 source:q:\projects\attack-vector\shape.cpp
+	"Shape.h"
+
+1428708753 source:q:\projects\attack-vector\ship.cpp
+	"ship.h"
+
+1428708753 source:q:\projects\attack-vector\utils.cpp
+	"Utils.h"
+	<cmath>
+

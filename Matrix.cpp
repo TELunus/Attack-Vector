@@ -7,7 +7,7 @@ Some thoughts on class design.
 * Error messages should include argument values when argument values are source of problem
 * Precondition checks at beginning
 * All shops I've worked at use camel case instead of _ for method names
-* operator== very useful for unit testing 
+* operator== very useful for unit testing
 */
 
 math_matrix::math_matrix(const vector<math_vector>& values)
@@ -45,7 +45,7 @@ bool math_matrix::operator==( const math_matrix & rhs) const
 	for( int i=0; i < rhs.num_rows(); i++)
 	{
 		if( ! (m_rows[i] == rhs.m_rows[i])) return false;
-			
+
 	}
 	return true;
 }
@@ -150,7 +150,7 @@ math_vector math_matrix::collum(const unsigned int& index)const
 		errMsg << "Trying to extract column " << index << " in matrix with only " << num_rows() << " columns.";
 		throw FlexibleExeption(errMsg.str());
 	}
-	
+
 	vector<double> result;
 	for (unsigned int i = 0; i < num_rows(); i++)
 	{
@@ -445,38 +445,6 @@ math_matrix ident(const unsigned int& size)
         value[i][i] = 1;
     }
     return math_matrix(value);
-}
-
-
-
-math_matrix leftRotationMatrix(const math_vector& CircuimferentialDisplacement, const math_vector& Position)
-{
-	vector<math_vector> result;
-	unsigned int size = Position.num_elements();
-	math_matrix IdentityMatrix(ident(size));
-	for (unsigned int i = 0; i<size; i++)
-	{
-
-		math_vector col_i(vector<double>(size, 1.0));
-		col_i = IdentityMatrix*col_i;
-		math_vector X(Position);
-		math_vector Y(X.perpendicular(CircuimferentialDisplacement));
-		double theta = Y.magnatude() / X.magnatude();
-		X = X/X.magnatude();
-		Y = Y/Y.magnatude();
-
-		math_vector perp(X.perpendicular(col_i));
-		perp = Y.perpendicular(perp);
-		math_vector u_in(X.parallel(col_i));
-		math_vector v_in(Y.parallel(col_i));
-		math_vector u_out(u_in*cos(theta));
-		math_vector v_out(v_in*cos(theta));
-		u_out -= v_in*sin(theta);
-		v_out += u_in*sin(theta);
-		math_vector in_plane(u_out + v_out);
-		result.push_back(in_plane + perp);
-	}
-	return math_matrix(result);
 }
 
 math_matrix leftRotMatrix(const math_vector& offset, const math_vector& displacement)
